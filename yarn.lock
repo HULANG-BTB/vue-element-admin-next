@@ -1028,6 +1028,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/js-cookie@^2.2.6":
+  version "2.2.6"
+  resolved "http://172.18.169.14:8081/repository/npm-public/@types/js-cookie/-/js-cookie-2.2.6.tgz#f1a1cb35aff47bc5cfb05cb0c441ca91e914c26f"
+  integrity sha1-8aHLNa/0e8XPsFywxEHKkekUwm8=
+
 "@types/json-schema@^7.0.3", "@types/json-schema@^7.0.4", "@types/json-schema@^7.0.5":
   version "7.0.7"
   resolved "https://registry.npm.taobao.org/@types/json-schema/download/@types/json-schema-7.0.7.tgz?cache=0&sync_timestamp=1613378919536&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fjson-schema%2Fdownload%2F%40types%2Fjson-schema-7.0.7.tgz#98a993516c859eb0d5c4c8f098317a9ea68db9ad"
@@ -1196,6 +1201,21 @@
 "@vue/babel-plugin-jsx@^1.0.0-0":
   version "1.0.3"
   resolved "https://registry.npm.taobao.org/@vue/babel-plugin-jsx/download/@vue/babel-plugin-jsx-1.0.3.tgz?cache=0&sync_timestamp=1612619659402&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vue%2Fbabel-plugin-jsx%2Fdownload%2F%40vue%2Fbabel-plugin-jsx-1.0.3.tgz#ad5ee86ebc9fc40900add9914534e223c719eace"
+  integrity sha1-rV7obryfxAkArdmRRTTiI8cZ6s4=
+  dependencies:
+    "@babel/helper-module-imports" "^7.0.0"
+    "@babel/plugin-syntax-jsx" "^7.0.0"
+    "@babel/template" "^7.0.0"
+    "@babel/traverse" "^7.0.0"
+    "@babel/types" "^7.0.0"
+    "@vue/babel-helper-vue-transform-on" "^1.0.2"
+    camelcase "^6.0.0"
+    html-tags "^3.1.0"
+    svg-tags "^1.0.0"
+
+"@vue/babel-plugin-jsx@^1.0.3":
+  version "1.0.3"
+  resolved "http://172.18.169.14:8081/repository/npm-public/@vue/babel-plugin-jsx/-/babel-plugin-jsx-1.0.3.tgz#ad5ee86ebc9fc40900add9914534e223c719eace"
   integrity sha1-rV7obryfxAkArdmRRTTiI8cZ6s4=
   dependencies:
     "@babel/helper-module-imports" "^7.0.0"
@@ -5648,6 +5668,11 @@ js-base64@^2.1.8:
   version "2.6.4"
   resolved "https://registry.npm.taobao.org/js-base64/download/js-base64-2.6.4.tgz?cache=0&sync_timestamp=1604450430432&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fjs-base64%2Fdownload%2Fjs-base64-2.6.4.tgz#f4e686c5de1ea1f867dbcad3d46d969428df98c4"
   integrity sha1-9OaGxd4eofhn28rT1G2WlCjfmMQ=
+
+js-cookie@^2.2.1:
+  version "2.2.1"
+  resolved "http://172.18.169.14:8081/repository/npm-public/js-cookie/-/js-cookie-2.2.1.tgz#69e106dc5d5806894562902aa5baec3744e9b2b8"
+  integrity sha1-aeEG3F1YBolFYpAqpbrsN0Tpsrg=
 
 js-message@1.0.7:
   version "1.0.7"
