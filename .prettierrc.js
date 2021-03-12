@@ -1,5 +1,5 @@
 module.exports = {
-  arrowParens: 'avoid', // (x) => {} 箭头函数参数只有一个时是否要有小括号。avoid：省略括号
+  arrowParens: 'always', // (x) => {} 箭头函数参数只有一个时是否要有小括号。avoid：省略括号
   endOfLine: 'lf', // 结尾是 \n \r \n\r lf
   semi: false, // 句尾添加分号 （不添加）
   singleQuote: true, // 使用单引号代替双引号
