@@ -6,6 +6,6 @@ export default {
     app.component(SvgIcon.name, SvgIcon)
     const svgFiles = require.context('./svg', false, /\.svg$/)
     const requireAll = (requireContext: any) => requireContext.keys().map(requireContext)
-    console.log(requireAll(svgFiles))
+    requireAll(svgFiles)
   }
 }
