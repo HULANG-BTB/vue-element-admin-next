@@ -10,7 +10,7 @@ const state: IRootState = {}
 const modules: ModuleTree<IRootState> = moduleFiles.keys().reduce((modules: any, module: string): any => {
   const moduleName = module.replace(/^\.\/(.*)\.\w+$/, '$1')
   const value = moduleFiles(module)
-  modules[moduleName] = value.default
+  if (value.default) modules[moduleName] = value.default
   return modules
 }, {})
 

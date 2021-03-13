@@ -1,6 +1,7 @@
 import { IRootState } from './index'
+import { GetterTree } from 'vuex'
 
-const getters = {
+const getters: GetterTree<IRootState, IRootState> = {
   sidebar: (state: IRootState) => state.app.sidebar,
   size: (state: IRootState) => state.app.size,
   device: (state: IRootState) => state.app.device,
