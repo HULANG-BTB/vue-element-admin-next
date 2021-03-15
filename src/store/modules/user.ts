@@ -1,6 +1,7 @@
-// import { login, logout, getInfo } from '@/api/user'
+import { login, logout, getInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 // import router, { resetRouter } from '@/router'
+import router from '@/router'
 import { IRootState } from '../index'
 import { ActionTree, MutationTree, Module, ActionContext, Commit, Dispatch } from 'vuex'
 
@@ -45,16 +46,16 @@ const actions: ActionTree<IUSerState, IRootState> = {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
       // login
-      // login({ username: username.trim(), password: password })
-      //   .then((response) => {
-      //     const { data } = response
-      //     commit('SET_TOKEN', data.token)
-      //     setToken(data.token)
-      //     resolve()
-      //   })
-      //   .catch((error) => {
-      //     reject(error)
-      //   })
+      login({ username: username.trim(), password: password })
+        .then((response) => {
+          const { data } = response
+          commit('SET_TOKEN', data.token)
+          setToken(data.token)
+          resolve()
+        })
+        .catch((error) => {
+          reject(error)
+        })
     })
   },
 
@@ -64,50 +65,49 @@ const actions: ActionTree<IUSerState, IRootState> = {
     const state: IUSerState = context.state
     return new Promise((resolve, reject) => {
       // getUserInfo
-      // getInfo(state.token)
-      //   .then((response) => {
-      //     const { data } = response
-      //     if (!data) {
-      //       reject('Verification failed, please Login again.')
-      //     }
-      //     const { roles, name, avatar, introduction } = data
-      //     // roles must be a non-empty array
-      //     if (!roles || roles.length <= 0) {
-      //       reject('getInfo: roles must be a non-null array!')
-      //     }
-      //     commit('SET_ROLES', roles)
-      //     commit('SET_NAME', name)
-      //     commit('SET_AVATAR', avatar)
-      //     commit('SET_INTRODUCTION', introduction)
-      //     resolve(data)
-      //   })
-      //   .catch((error) => {
-      //     reject(error)
-      //   })
+      getInfo(state.token)
+        .then((response) => {
+          const { data } = response
+          if (!data) {
+            reject('Verification failed, please Login again.')
+          }
+          const { roles, name, avatar, introduction } = data
+          // roles must be a non-empty array
+          if (!roles || roles.length <= 0) {
+            reject('getInfo: roles must be a non-null array!')
+          }
+          commit('SET_ROLES', roles)
+          commit('SET_NAME', name)
+          commit('SET_AVATAR', avatar)
+          commit('SET_INTRODUCTION', introduction)
+          resolve(data)
+        })
+        .catch((error) => {
+          reject(error)
+        })
     })
   },
 
   // user logout
   logout(context: ActionContext<IUSerState, IRootState>) {
     const commit: Commit = context.commit
-    const state: IUSerState = context.state
     const dispatch: Dispatch = context.dispatch
     return new Promise((resolve, reject) => {
       // logout
-      // logout(state.token)
-      //   .then(() => {
-      //     commit('SET_TOKEN', '')
-      //     commit('SET_ROLES', [])
-      //     removeToken()
-      //     resetRouter()
-      //     // reset visited views and cached views
-      //     // to fixed https://github.com/PanJiaChen/vue-element-admin/issues/2485
-      //     dispatch('tagsView/delAllViews', null, { root: true })
-      //     resolve()
-      //   })
-      //   .catch((error) => {
-      //     reject(error)
-      //   })
+      logout()
+        .then(() => {
+          commit('SET_TOKEN', '')
+          commit('SET_ROLES', [])
+          removeToken()
+          // resetRouter()
+          // reset visited views and cached views
+          // to fixed https://github.com/PanJiaChen/vue-element-admin/issues/2485
+          dispatch('tagsView/delAllViews', null, { root: true })
+          resolve()
+        })
+        .catch((error) => {
+          reject(error)
+        })
     })
   },
 
@@ -136,9 +136,10 @@ const actions: ActionTree<IUSerState, IRootState> = {
     // resetRouter()
 
     // generate accessible routes map based on roles
-    // const accessRoutes = await dispatch('permission/generateRoutes', roles, { root: true })
+    const accessRoutes = await dispatch('permission/generateRoutes', roles, { root: true })
     // dynamically add accessible routes
     // router.addRoutes(accessRoutes)
+    router.addRoute(accessRoutes)
 
     // reset visited views and cached views
     dispatch('tagsView/delAllViews', null, { root: true })
