@@ -57,6 +57,8 @@
 <script lang="ts">
 import { defineComponent, reactive, ref } from 'vue'
 import { validUsername } from '@/utils/validate'
+import { useStore } from 'vuex'
+import { useRoute, useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'Login',
@@ -87,23 +89,35 @@ export default defineComponent({
 
     const loading = ref<boolean>(false)
 
+    const store = useStore()
+    const router = useRouter()
+    const route = useRoute()
+
+    const getOtherQuery = (query: any) => {
+      return Object.keys(query).reduce((acc: any, cur: any) => {
+        if (cur !== 'redirect') {
+          acc[cur] = query[cur]
+        }
+        return acc
+      }, {})
+    }
+
+    const redirect: any = route.query.redirect
+
     const handleLogin = () => {
       //
       loginFormRef.value.validate((valid: boolean) => {
         if (valid) {
           loading.value = true
-          // this.$store
-          //   .dispatch('user/login', this.loginForm)
-          //   .then(() => {
-          //     this.$router.push({ path: this.redirect || '/', query: this.otherQuery })
-          //     this.loading = false
-          //   })
-          //   .catch(() => {
-          //     this.loading = false
-          //   })
-          setTimeout(() => {
-            loading.value = false
-          }, 5000)
+          store
+            .dispatch('user/login', loginFormData)
+            .then(() => {
+              router.push({ path: redirect || '/', query: getOtherQuery(route.query) })
+              loading.value = false
+            })
+            .catch(() => {
+              loading.value = false
+            })
         } else {
           console.log('error submit!!')
           return false
