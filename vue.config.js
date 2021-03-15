@@ -6,6 +6,14 @@ function resolve(dir) {
 }
 
 module.exports = {
+  devServer: {
+    open: true,
+    overlay: {
+      warnings: false,
+      errors: true
+    },
+    before: require('./mock/server')
+  },
   chainWebpack: (config) => {
     config.module
       .rule('svg')
