@@ -1,14 +1,13 @@
 import { Module, MutationTree, ActionTree, ActionContext, Commit, Dispatch } from 'vuex'
-import { RouteRecordNormalized } from 'vue-router'
+import { RouteRecord, RouteRecordName } from 'vue-router'
 import { IRootState } from '@/store'
 
-interface ITagViewState {
-  visitedViews: any[]
-  cachedViews: any[]
-}
-
-export interface ITagView extends RouteRecordNormalized {
+export interface ITagView extends RouteRecord {
   title?: string
+}
+interface ITagViewState {
+  visitedViews: ITagView[]
+  cachedViews: RouteRecordName[]
 }
 
 const state: ITagViewState = {
@@ -19,16 +18,15 @@ const state: ITagViewState = {
 const mutations: MutationTree<ITagViewState> = {
   ADD_VISITED_VIEW: (state: ITagViewState, view: ITagView) => {
     if (state.visitedViews.some((v) => v.path === view.path)) return
-    state.visitedViews.push(
-      Object.assign({}, view, {
-        title: view.meta.title || 'no-name'
-      })
-    )
+    state.visitedViews.push({
+      ...view,
+      title: (view.meta.title as string) || 'no-name'
+    })
   },
   ADD_CACHED_VIEW: (state: ITagViewState, view: ITagView) => {
-    if (state.cachedViews.includes(view.name)) return
+    if (state.cachedViews.includes(view.name || 'no-name')) return
     if (!view.meta.noCache) {
-      state.cachedViews.push(view.name)
+      state.cachedViews.push(view.name || 'no-name')
     }
   },
 
@@ -41,7 +39,7 @@ const mutations: MutationTree<ITagViewState> = {
     }
   },
   DEL_CACHED_VIEW: (state: ITagViewState, view: ITagView) => {
-    const index = state.cachedViews.indexOf(view.name)
+    const index = state.cachedViews.indexOf(view.name || 'no-name')
     index > -1 && state.cachedViews.splice(index, 1)
   },
 
@@ -51,7 +49,7 @@ const mutations: MutationTree<ITagViewState> = {
     })
   },
   DEL_OTHERS_CACHED_VIEWS: (state: ITagViewState, view: ITagView) => {
-    const index = state.cachedViews.indexOf(view.name)
+    const index = state.cachedViews.indexOf(view.name || 'no-name')
     if (index > -1) {
       state.cachedViews = state.cachedViews.slice(index, index + 1)
     } else {
@@ -120,7 +118,6 @@ const actions: ActionTree<ITagViewState, IRootState> = {
       resolve([...state.cachedViews])
     })
   },
-
   delOthersViews(context: ActionContext<ITagViewState, IRootState>, view: ITagView) {
     const dispatch: Dispatch = context.dispatch
     const state: ITagViewState = context.state
@@ -149,7 +146,6 @@ const actions: ActionTree<ITagViewState, IRootState> = {
       resolve([...state.cachedViews])
     })
   },
-
   delAllViews(context: ActionContext<ITagViewState, IRootState>, view: ITagView) {
     const dispatch: Dispatch = context.dispatch
     const state: ITagViewState = context.state
