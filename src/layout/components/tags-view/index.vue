@@ -89,7 +89,7 @@ export default defineComponent({
       nextTick(() => {
         for (const tag of tagRefs.value) {
           if (tag.to.path === route.path) {
-            scrollPaneRef.value.moveToTarget(tag, tagRefs.value)
+            scrollPaneRef.value?.moveToTarget(tag, tagRefs.value)
             // when query is different then update
             if (tag.to.fullPath !== route.fullPath) {
               store.dispatch('tagsView/updateVisitedView', route)
