@@ -50,6 +50,8 @@ export default defineComponent({
     const tagRefs = ref<any[]>([])
 
     const addTagRefs = (val: any) => {
+      console.log('add tag', val)
+
       tagRefs.value.push(val)
     }
 
@@ -89,7 +91,7 @@ export default defineComponent({
       nextTick(() => {
         for (const tag of tagRefs.value) {
           if (tag.to.path === route.path) {
-            scrollPaneRef.value.moveToTarget(tag)
+            scrollPaneRef.value.moveToTarget(tag, tagRefs.value)
             // when query is different then update
             if (tag.to.fullPath !== route.fullPath) {
               store.dispatch('tagsView/updateVisitedView', route)
@@ -250,6 +252,7 @@ export default defineComponent({
       closeAllTags,
       isActive,
       addTagRefs,
+      tagRefs,
       tagsViewRef,
       scrollPaneRef
     }

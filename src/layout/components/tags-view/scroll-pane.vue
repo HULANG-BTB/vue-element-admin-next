@@ -34,11 +34,19 @@ export default defineComponent({
       scrollContainerRef.value.$refs.wrap.removeEventListener('scroll', emitScroll)
     })
 
-    const moveToTarget = (currentTag: any) => {
+    // 外置方法 移动到目标
+    const moveToTarget = (currentTag: any, tagList: any[]) => {
       const $container = scrollContainerRef.value.$el
       const $containerWidth = $container.offsetWidth
       const $scrollWrapper = scrollContainerRef.value.$refs.wrap
-      const tagList = scrollContainerRef.value.$parent.$refs.tag
+
+      // console.log($instance.parent)
+
+      // const tagList = $instance.parent.tagRefs.value
+      // console.log(tagList)
+      // console.log(tagRefs)
+
+      // const tagList = tagRefs as Array<any>
       let firstTag = null
       let lastTag = null
       // find first tag and last tag
