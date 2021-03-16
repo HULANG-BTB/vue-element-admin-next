@@ -50,8 +50,6 @@ export default defineComponent({
     const tagRefs = ref<any[]>([])
 
     const addTagRefs = (val: any) => {
-      console.log('add tag', val)
-
       tagRefs.value.push(val)
     }
 
