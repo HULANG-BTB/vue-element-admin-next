@@ -10,7 +10,7 @@ interface IUSerState {
   name: string
   avatar: string
   introduction: string
-  roles: any[]
+  roles: string[]
 }
 
 const state: IUSerState = {
