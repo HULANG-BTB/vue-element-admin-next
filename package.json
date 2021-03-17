@@ -16,6 +16,7 @@
     "nprogress": "^0.2.0",
     "svg-sprite-loader": "^5.2.1",
     "vue": "^3.0.7",
+    "vue-count-to-next": "^0.1.2",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
   },
