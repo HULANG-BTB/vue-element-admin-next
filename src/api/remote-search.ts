@@ -23,7 +23,7 @@ export function searchUser(name: any) {
   })
 }
 
-export function transactionList(query: any) {
+export function transactionList(query: any = {}) {
   return request({
     url: '/vue-element-admin/transaction/list',
     method: 'get',
