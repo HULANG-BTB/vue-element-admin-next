@@ -1,13 +1,14 @@
 import { debounce } from '@/utils'
+import { nextTick } from 'vue'
 
 function useResize() {
-  const sidebarElement: any = document.getElementsByClassName('sidebar-container')[0]
+  let sidebarElement: any = document.getElementsByClassName('sidebar-container')[0]
 
   const resizeHandlerStack: Function[] = []
 
   const resizeHandler = debounce(() => {
     resizeHandlerStack.forEach((handler: Function) => handler())
-  }, 300)
+  }, 50)
 
   const initResizeEvent = () => {
     window.addEventListener('resize', () => resizeHandler())
@@ -23,7 +24,11 @@ function useResize() {
   }
 
   const initSidebarResizeEvent = () => {
-    sidebarElement?.addEventListener('transitionend', sidebarResizeHandler)
+    // 组件更新之后再添加监听事件
+    nextTick(() => {
+      sidebarElement = sidebarElement || document.getElementsByClassName('sidebar-container')[0]
+      sidebarElement?.addEventListener('transitionend', sidebarResizeHandler)
+    })
   }
 
   const destroySidebarResizeEvent = () => {
