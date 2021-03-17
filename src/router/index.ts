@@ -34,7 +34,10 @@ export const routes: Array<RouteRecordRaw> = [
     children: [
       {
         path: '/redirect/:path(.*)',
-        component: () => import('@/views/redirect/index.vue')
+        component: () => import('@/views/redirect/index.vue'),
+        meta: {
+          noCache: true
+        }
       }
     ],
     meta: {
