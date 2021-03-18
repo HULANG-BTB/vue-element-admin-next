@@ -127,7 +127,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       },
       {
         path: 'role',
-        component: () => import('@/views/dashboard/index.vue'),
+        component: () => import('@/views/permission/role.vue'),
         name: 'RolePermission',
         meta: {
           title: 'Role Permission',
