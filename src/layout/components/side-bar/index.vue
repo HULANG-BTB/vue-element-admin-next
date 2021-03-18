@@ -21,8 +21,6 @@ export default defineComponent({
 
     const route = useRoute()
 
-    console.log(store)
-
     // 是否显示侧边栏 Logo
     const showLogo = computed(() => {
       return store.state.settings.sidebarLogo
