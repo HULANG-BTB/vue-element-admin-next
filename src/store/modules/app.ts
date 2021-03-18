@@ -2,6 +2,8 @@ import Cookies from 'js-cookie'
 import { Module, MutationTree, ActionTree, ActionContext, Commit } from 'vuex'
 import { IRootState } from '@/store'
 
+import app from '@/main'
+
 interface IAppState {
   sidebar: {
     opened: boolean
@@ -40,6 +42,7 @@ const mutations: MutationTree<IAppState> = {
   },
   SET_SIZE: (state: IAppState, size: string) => {
     state.size = size
+    app.config.globalProperties.$ELEMENT.size = size
     Cookies.set('size', size)
   }
 }

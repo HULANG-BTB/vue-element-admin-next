@@ -19,7 +19,7 @@ import ErrorLogPlugin from '@/plugins/error-log'
 const app = createApp(App)
 app.use(store)
 app.use(router)
-app.use(ElementPlus, { size: 'mini' })
+app.use(ElementPlus, { size: store.getters.size })
 app.use(SvgIcon)
 app.use(permission)
 app.use(ErrorLogPlugin)
