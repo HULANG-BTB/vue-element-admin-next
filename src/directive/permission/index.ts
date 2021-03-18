@@ -9,3 +9,4 @@ const vPermission: Plugin = {
 }
 
 export default vPermission
+export { permission }
