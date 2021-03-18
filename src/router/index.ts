@@ -319,7 +319,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
     children: [
       {
         path: 'index',
-        component: () => import('@/views/dashboard/index.vue'),
+        component: () => import('@/views/clipboard/index.vue'),
         name: 'ClipboardDemo',
         meta: { title: 'Clipboard', icon: 'clipboard' }
       }
