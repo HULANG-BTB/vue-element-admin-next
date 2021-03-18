@@ -4,7 +4,7 @@ interface AppSetting {
   tagsView: boolean
   fixedHeader: boolean
   sidebarLogo: boolean
-  errorLog: string
+  errorLog: string | Array<string>
 }
 
 const settings: AppSetting = {
@@ -40,7 +40,7 @@ const settings: AppSetting = {
    * The default is only used in the production env
    * If you want to also use it in dev, you can pass ['production', 'development']
    */
-  errorLog: 'production'
+  errorLog: ['production', 'development']
 }
 
 export default settings
