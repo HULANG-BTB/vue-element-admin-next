@@ -288,7 +288,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
     children: [
       {
         path: 'index',
-        component: () => import('@/views/dashboard/index.vue'),
+        component: () => import('@/views/pdf/index.vue'),
         name: 'PDF',
         meta: { title: 'PDF', icon: 'pdf' }
       }
@@ -296,7 +296,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
   },
   {
     path: '/pdf/download',
-    component: () => import('@/views/dashboard/index.vue'),
+    component: () => import('@/views/pdf/download.vue'),
     meta: {
       hidden: true
     }
