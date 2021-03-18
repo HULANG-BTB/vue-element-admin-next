@@ -82,8 +82,6 @@ export default defineComponent({
       driver = new Driver()
     })
 
-    console.log(123)
-
     return {
       guide
     }
