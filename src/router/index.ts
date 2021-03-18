@@ -142,7 +142,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
     children: [
       {
         path: 'index',
-        component: () => import('@/views/dashboard/index.vue'),
+        component: () => import('@/views/icons/index.vue'),
         name: 'Icons',
         meta: { title: 'Icons', icon: 'icon', noCache: true }
       }
