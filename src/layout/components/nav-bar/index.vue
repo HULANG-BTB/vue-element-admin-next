@@ -15,29 +15,31 @@
         </el-tooltip> -->
       </template>
 
-      <!-- <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
+      <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper">
           <img :src="avatar + '?imageView2/1/w/80/h/80'" class="user-avatar" />
           <i class="el-icon-caret-bottom" />
         </div>
-        <el-dropdown-menu slot="dropdown">
-          <router-link to="/profile/index">
-            <el-dropdown-item>Profile</el-dropdown-item>
-          </router-link>
-          <router-link to="/">
-            <el-dropdown-item>Dashboard</el-dropdown-item>
-          </router-link>
-          <a target="_blank" href="https://github.com/PanJiaChen/vue-element-admin/">
-            <el-dropdown-item>Github</el-dropdown-item>
-          </a>
-          <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
-            <el-dropdown-item>Docs</el-dropdown-item>
-          </a>
-          <el-dropdown-item divided @click="logout">
-            <span style="display:block;">Log Out</span>
-          </el-dropdown-item>
+        <el-dropdown-menu>
+          <template #dropdown>
+            <router-link to="/profile/index">
+              <el-dropdown-item>Profile</el-dropdown-item>
+            </router-link>
+            <router-link to="/">
+              <el-dropdown-item>Dashboard</el-dropdown-item>
+            </router-link>
+            <a target="_blank" href="https://github.com/PanJiaChen/vue-element-admin/">
+              <el-dropdown-item>Github</el-dropdown-item>
+            </a>
+            <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
+              <el-dropdown-item>Docs</el-dropdown-item>
+            </a>
+            <el-dropdown-item divided @click="logout">
+              <span style="display:block;">Log Out</span>
+            </el-dropdown-item>
+          </template>
         </el-dropdown-menu>
-      </el-dropdown> -->
+      </el-dropdown>
     </div>
   </div>
 </template>
@@ -47,12 +49,15 @@ import { computed, defineComponent } from 'vue'
 import { useStore } from 'vuex'
 import Hamburger from './components/hamburger/index.vue'
 import ErrorLog from './components/error-log/index.vue'
+import { useRoute, useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'NavBar',
   components: { Hamburger, ErrorLog },
   setup() {
     const store = useStore()
+    const router = useRouter()
+    const route = useRoute()
 
     const sidebar = computed(() => {
       return store.getters.sidebar
@@ -62,14 +67,25 @@ export default defineComponent({
       store.dispatch('app/toggleSideBar')
     }
 
+    const avatar = computed(() => {
+      return store.getters.avatar
+    })
+
     const device = computed(() => {
       return store.getters.device
     })
 
+    const logout = async () => {
+      await store.dispatch('user/logout')
+      router.push(`/login?redirect=${route.fullPath}`)
+    }
+
     return {
       sidebar,
       toggleSideBar,
-      device
+      device,
+      avatar,
+      logout
     }
   }
 })
