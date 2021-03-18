@@ -22,3 +22,7 @@ app.use(ElementPlus)
 app.use(SvgIcon)
 app.use(permission)
 app.mount('#app')
+
+console.log(app)
+
+export default app
