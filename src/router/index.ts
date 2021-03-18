@@ -118,7 +118,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       },
       {
         path: 'directive',
-        component: () => import('@/views/dashboard/index.vue'),
+        component: () => import('@/views/permission/directive.vue'),
         name: 'DirectivePermission',
         meta: {
           title: 'Directive Permission'
