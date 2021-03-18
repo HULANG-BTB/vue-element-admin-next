@@ -75,6 +75,18 @@ export const routes: Array<RouteRecordRaw> = [
         meta: { title: 'Documentation', icon: 'documentation', affix: true }
       }
     ]
+  },
+  {
+    path: '/guide',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/guide/index.vue'),
+        name: 'Guide',
+        meta: { title: 'Guide', icon: 'guide', noCache: true }
+      }
+    ]
   }
 ]
 
