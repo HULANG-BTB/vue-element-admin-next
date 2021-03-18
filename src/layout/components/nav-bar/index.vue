@@ -8,11 +8,11 @@
 
         <error-log class="errLog-container right-menu-item hover-effect" />
 
-        <!-- <screenfull id="screenfull" class="right-menu-item hover-effect" />
+        <!-- <screenfull id="screenfull" class="right-menu-item hover-effect" /> -->
 
         <el-tooltip content="Global Size" effect="dark" placement="bottom">
           <size-select id="size-select" class="right-menu-item hover-effect" />
-        </el-tooltip> -->
+        </el-tooltip>
       </template>
 
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
@@ -49,11 +49,13 @@ import { computed, defineComponent } from 'vue'
 import { useStore } from 'vuex'
 import Hamburger from './components/hamburger/index.vue'
 import ErrorLog from './components/error-log/index.vue'
+import SizeSelect from './components/size-select/index.vue'
+
 import { useRoute, useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'NavBar',
-  components: { Hamburger, ErrorLog },
+  components: { Hamburger, ErrorLog, SizeSelect },
   setup() {
     const store = useStore()
     const router = useRouter()
