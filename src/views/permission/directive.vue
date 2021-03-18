@@ -17,7 +17,7 @@
       </div>
 
       <div v-permission="['admin', 'editor']">
-        <span class="permission-alert"> <el-tag class="permission-tag" size="small">admin</el-tag> and <el-tag class="permission-tag" size="small">editor</el-tag> can see this </span>
+        <span class="permission-alert"> Both <el-tag class="permission-tag" size="small">admin</el-tag> or <el-tag class="permission-tag" size="small">editor</el-tag> can see this </span>
         <el-tag class="permission-sourceCode" type="info">
           v-permission="['admin','editor']"
         </el-tag>
