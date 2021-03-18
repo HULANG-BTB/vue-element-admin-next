@@ -220,7 +220,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
     children: [
       {
         path: 'log',
-        component: () => import('@/views/dashboard/index.vue'),
+        component: () => import('@/views/error-log/index.vue'),
         name: 'ErrorLog',
         meta: { title: 'Error Log', icon: 'bug' }
       }
