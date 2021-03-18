@@ -1,7 +1,8 @@
 <template>
   <div class="errPage-container">
-    <!-- <ErrorA />
-    <ErrorB /> -->
+    <ErrorA />
+    <ErrorB />
+    <ErrorC />
     <h3>Please click the bug icon in the upper right corner</h3>
     <aside>
       Now the management system are basically the form of the spa, it enhances the user experience, but it also increases the possibility of page problems, a small negligence may lead to the entire
@@ -18,12 +19,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-// import ErrorA from './components/error-test-a.vue'
-// import ErrorB from './components/error-test-b.vue'
+import ErrorA from './components/error-test-a.vue'
+import ErrorB from './components/error-test-b.vue'
+import ErrorC from './components/error-test-c.vue'
 
 export default defineComponent({
-  name: 'ErrorLogPage'
-  // components: { ErrorA, ErrorB }
+  name: 'ErrorLogPage',
+  components: { ErrorA, ErrorB, ErrorC }
 })
 </script>
 
