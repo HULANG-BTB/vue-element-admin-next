@@ -9,7 +9,7 @@ import * as echarts from 'echarts'
 
 import 'echarts/theme/macarons'
 
-import useResize from '../../mixins/resize'
+import useResize from '@/mixins/resize'
 
 export default defineComponent({
   name: 'BarChart',
@@ -27,7 +27,7 @@ export default defineComponent({
     const root = ref<any>(null)
     let chart: any = null
 
-    const { onCancel, onResize } = useResize()
+    const { onResize } = useResize()
 
     onMounted(() => {
       onResize(() => {
@@ -36,8 +36,6 @@ export default defineComponent({
         }
       })
     })
-
-    onBeforeUnmount(onCancel)
 
     const initChart = () => {
       chart = echarts.init(root.value, 'macarons')

@@ -9,7 +9,7 @@ import * as echarts from 'echarts'
 
 import 'echarts/theme/macarons'
 
-import useResize from '../../mixins/resize'
+import useResize from '@/mixins/resize'
 
 export default defineComponent({
   name: 'PieChart',
@@ -27,17 +27,11 @@ export default defineComponent({
     const root = ref<any>(null)
     let chart: any = null
 
-    const { onCancel, onResize } = useResize()
+    const { onResize } = useResize()
 
-    onMounted(() => {
-      onResize(() => {
-        if (chart) {
-          chart.resize?.()
-        }
-      })
+    onResize(() => {
+      chart?.resize?.()
     })
-
-    onBeforeUnmount(onCancel)
 
     const initChart = () => {
       chart = echarts.init(root.value, 'macarons')

@@ -14,7 +14,7 @@ export interface ILineChartData {
   actualData: number[]
 }
 
-import useResize from '../../mixins/resize'
+import useResize from '@/mixins/resize'
 
 export default defineComponent({
   name: 'LineChart',
@@ -40,14 +40,10 @@ export default defineComponent({
     const root = ref<any>(null)
     let chart: any = null
 
-    const { onResize, onCancel } = useResize()
-
-    onMounted(onCancel)
+    const { onResize } = useResize()
 
     onResize(() => {
-      if (chart) {
-        chart.resize?.()
-      }
+      chart?.resize?.()
     })
 
     const setOptions = (data: any = {}) => {
