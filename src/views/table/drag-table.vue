@@ -89,7 +89,7 @@ export default defineComponent({
     const dragTable = ref<any>(null)
 
     const setSort = () => {
-      const el = dragTable.value.$el.querySelectorAll('.el-table__body-wrapper > table > tbody')[0]
+      const el = dragTable.value?.$el.querySelectorAll('.el-table__body-wrapper > table > tbody')[0]
       Sortable.create(el, {
         ghostClass: 'sortable-ghost', // Class name for the drop placeholder,
         setData: function(dataTransfer: any) {
