@@ -214,30 +214,30 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       }
     ]
   },
-  {
-    path: '/example',
-    component: Layout,
-    redirect: '/example/list',
-    name: 'Example',
-    meta: {
-      title: 'Example',
-      icon: 'el-icon-s-help'
-    },
-    children: [
-      {
-        path: 'create',
-        component: () => import('@/views/dashboard/index.vue'),
-        name: 'CreateArticle',
-        meta: { title: 'Create Article', icon: 'edit' }
-      },
-      {
-        path: 'list',
-        component: () => import('@/views/dashboard/index.vue'),
-        name: 'ArticleList',
-        meta: { title: 'Article List', icon: 'list' }
-      }
-    ]
-  },
+  // {
+  //   path: '/example',
+  //   component: Layout,
+  //   redirect: '/example/list',
+  //   name: 'Example',
+  //   meta: {
+  //     title: 'Example',
+  //     icon: 'el-icon-s-help'
+  //   },
+  //   children: [
+  //     {
+  //       path: 'create',
+  //       component: () => import('@/views/dashboard/index.vue'),
+  //       name: 'CreateArticle',
+  //       meta: { title: 'Create Article', icon: 'edit' }
+  //     },
+  //     {
+  //       path: 'list',
+  //       component: () => import('@/views/dashboard/index.vue'),
+  //       name: 'ArticleList',
+  //       meta: { title: 'Article List', icon: 'list' }
+  //     }
+  //   ]
+  // },
   {
     path: '/tab',
     component: Layout,
@@ -286,61 +286,61 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       }
     ]
   },
-  {
-    path: '/excel',
-    component: Layout,
-    redirect: '/excel/export-excel',
-    name: 'Excel',
-    meta: {
-      title: 'Excel',
-      icon: 'excel'
-    },
-    children: [
-      {
-        path: 'export-excel',
-        component: () => import('@/views/dashboard/index.vue'),
-        name: 'ExportExcel',
-        meta: { title: 'Export Excel' }
-      },
-      {
-        path: 'export-selected-excel',
-        component: () => import('@/views/dashboard/index.vue'),
-        name: 'SelectExcel',
-        meta: { title: 'Export Selected' }
-      },
-      {
-        path: 'export-merge-header',
-        component: () => import('@/views/dashboard/index.vue'),
-        name: 'MergeHeader',
-        meta: { title: 'Merge Header' }
-      },
-      {
-        path: 'upload-excel',
-        component: () => import('@/views/dashboard/index.vue'),
-        name: 'UploadExcel',
-        meta: { title: 'Upload Excel' }
-      }
-    ]
-  },
-  {
-    path: '/zip',
-    component: Layout,
-    redirect: '/zip/download',
-    name: 'Zip',
-    meta: {
-      alwaysShow: true,
-      title: 'Zip',
-      icon: 'zip'
-    },
-    children: [
-      {
-        path: 'download',
-        component: () => import('@/views/dashboard/index.vue'),
-        name: 'ExportZip',
-        meta: { title: 'Export Zip' }
-      }
-    ]
-  },
+  // {
+  //   path: '/excel',
+  //   component: Layout,
+  //   redirect: '/excel/export-excel',
+  //   name: 'Excel',
+  //   meta: {
+  //     title: 'Excel',
+  //     icon: 'excel'
+  //   },
+  //   children: [
+  //     {
+  //       path: 'export-excel',
+  //       component: () => import('@/views/dashboard/index.vue'),
+  //       name: 'ExportExcel',
+  //       meta: { title: 'Export Excel' }
+  //     },
+  //     {
+  //       path: 'export-selected-excel',
+  //       component: () => import('@/views/dashboard/index.vue'),
+  //       name: 'SelectExcel',
+  //       meta: { title: 'Export Selected' }
+  //     },
+  //     {
+  //       path: 'export-merge-header',
+  //       component: () => import('@/views/dashboard/index.vue'),
+  //       name: 'MergeHeader',
+  //       meta: { title: 'Merge Header' }
+  //     },
+  //     {
+  //       path: 'upload-excel',
+  //       component: () => import('@/views/dashboard/index.vue'),
+  //       name: 'UploadExcel',
+  //       meta: { title: 'Upload Excel' }
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/zip',
+  //   component: Layout,
+  //   redirect: '/zip/download',
+  //   name: 'Zip',
+  //   meta: {
+  //     alwaysShow: true,
+  //     title: 'Zip',
+  //     icon: 'zip'
+  //   },
+  //   children: [
+  //     {
+  //       path: 'download',
+  //       component: () => import('@/views/dashboard/index.vue'),
+  //       name: 'ExportZip',
+  //       meta: { title: 'Export Zip' }
+  //     }
+  //   ]
+  // },
   {
     path: '/pdf',
     component: Layout,
