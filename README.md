@@ -139,7 +139,7 @@ yarn serve
 
 ```bash
 # 构建生产环境
-npm run build
+yran build
 ```
 
 ## 其它
