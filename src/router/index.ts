@@ -165,12 +165,6 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         meta: { title: 'Create Article', icon: 'edit' }
       },
       {
-        path: 'edit/:id(\\d+)',
-        component: () => import('@/views/dashboard/index.vue'),
-        name: 'EditArticle',
-        meta: { title: 'Edit Article', noCache: true, activeMenu: '/example/list', hidden: true }
-      },
-      {
         path: 'list',
         component: () => import('@/views/dashboard/index.vue'),
         name: 'ArticleList',
