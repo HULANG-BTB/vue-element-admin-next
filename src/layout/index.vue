@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
+import { computed, defineComponent, onMounted } from 'vue'
 import SideBar from './components/side-bar/index.vue'
 import NavBar from './components/nav-bar/index.vue'
 import TagsView from './components/tags-view/index.vue'
@@ -26,6 +26,10 @@ import AppMain from './components/app-main/index.vue'
 import SettingsView from './components/settings-view/index.vue'
 import RightPanel from './components/right-panel/index.vue'
 import { useStore } from 'vuex'
+
+import useResize from '@/mixins/resize'
+
+const WIDTH = 992
 
 export default defineComponent({
   name: 'Layout',
@@ -62,13 +66,43 @@ export default defineComponent({
       }
     })
 
+    const { onResize } = useResize()
+
+    onResize(() => {
+      if (!document.hidden) {
+        const rect: DOMRect = document.body.getBoundingClientRect()
+        const isMobile = rect.width - 1 < WIDTH
+
+        store.dispatch('app/toggleDevice', isMobile ? 'mobile' : 'desktop')
+
+        if (isMobile) {
+          store.dispatch('app/closeSideBar', { withoutAnimation: true })
+        }
+      }
+    })
+
+    onMounted(() => {
+      const rect: DOMRect = document.body.getBoundingClientRect()
+      const isMobile = rect.width - 1 < WIDTH
+
+      if (isMobile) {
+        store.dispatch('app/toggleDevice', 'mobile')
+        store.dispatch('app/closeSideBar', { withoutAnimation: true })
+      }
+    })
+
+    const handleClickOutside = () => {
+      store.dispatch('app/closeSideBar', { withoutAnimation: false })
+    }
+
     return {
       device,
       sidebar,
       needTagsView,
       fixedHeader,
       showSettings,
-      classObj
+      classObj,
+      handleClickOutside
     }
   }
 })
