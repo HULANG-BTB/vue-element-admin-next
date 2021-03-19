@@ -8,7 +8,7 @@
 
     <el-table-column width="180px" align="center" label="Date">
       <template #default="scope">
-        <span>{{ parseTime(scope.row.timestamp, '{y}-{m}-{d} {h}:{i}') }}</span>
+        <span>{{ parseTime(scope.row.timestamp, 'YYYY-MM-DD HH:mm:ss') }}</span>
       </template>
     </el-table-column>
 
