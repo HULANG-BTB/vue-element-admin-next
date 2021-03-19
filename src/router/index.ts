@@ -184,7 +184,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
     children: [
       {
         path: 'index',
-        component: () => import('@/views/dashboard/index.vue'),
+        component: () => import('@/views/tab/index.vue'),
         name: 'Tab',
         meta: { title: 'Tab', icon: 'tab' }
       }
