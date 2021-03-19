@@ -3,7 +3,7 @@ import 'nprogress/nprogress.css' // progress bar style
 import store from '@/store'
 import { getToken } from '@/utils/auth' // get token from cookie
 
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import Layout from '@/layout/index.vue'
 import { ElMessage } from 'element-plus'
 /**
@@ -400,7 +400,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(process.env.BASE_URL),
   routes,
   scrollBehavior: () => ({ top: 0 })
 })
