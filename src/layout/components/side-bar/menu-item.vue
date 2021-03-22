@@ -26,9 +26,9 @@
         <template v-else>
           <i :class="[item.meta.icon, 'sub-el-icon']" />
         </template>
-        <template v-if="item.meta.title">
-          <span>{{ item.meta.title }}</span>
-        </template>
+      </template>
+      <template v-if="item.meta.title">
+        <span>{{ item.meta.title }}</span>
       </template>
     </template>
     <menu-item v-for="child in item.children" :key="child.path" :is-nest="true" :item="child" :base-path="resolvePath(child.path)" />
