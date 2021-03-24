@@ -13,9 +13,11 @@ function useResize(wait = 50): IResizeMixin {
 
   const registerElementStack: any[] = []
 
-  const resizeHandler = debounce(() => {
-    resizeHandlerStack.forEach((handler: Function) => handler())
-  }, wait)
+  const resizeHandler = function(...rest: any[]) {
+    debounce(() => {
+      resizeHandlerStack.forEach((handler: Function) => handler.call(this, rest))
+    }, wait)()
+  }
 
   const initWindowResizeEvent = () => {
     window.addEventListener('resize', resizeHandler)
